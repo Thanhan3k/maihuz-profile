@@ -87,35 +87,6 @@
         </div>
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var feedbackForm = document.getElementById("feedback-form");
-            var feedbackMessage = document.getElementById("feedback-message");
-
-            feedbackForm.addEventListener("submit", function(event) {
-                event.preventDefault(); // Prevent default form submission
-
-                var formData = new FormData(this); // Get form data
-                var feedback = formData.get("feedback"); // Get feedback from form data
-
-                // Gửi phản hồi tới máy chủ (bạn có thể sử dụng API tìm nạp hoặc AJAX tại đây)
-                 // Ví dụ: bạn có thể gửi nó đến điểm cuối phụ trợ để xử lý
-                 // Thay thế "your-backend-endpoint" bằng URL điểm cuối thực tế của bạn
-                fetch("your-backend-endpoint", {
-                    method: "POST",
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(data => {
-                    // Hiển thị thông báo phản hồi cho người dùng
-                    feedbackMessage.textContent = data.message;
-                })
-                .catch(error => {
-                    console.error("Error:", error);
-                });
-            });
-        });
-    </script>
             </div>
             <div class="back-button">
                 <button onclick="window.history.back()">Back</button>
