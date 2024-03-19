@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fafafa;
+        }
+        .settings-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .setting {
+            margin-bottom: 20px;
+        }
+        .setting label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .setting input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .setting input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .setting input[type="button"] {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="settings-container">
+        <div class="setting">
+            <label for="dark-mode">Dark Mode(baotri):</label>
+            <input type="checkbox" id="dark-mode">
+        </div>
+        <div class="setting">
+            <label for="username">Username:</label>
+            <input type="text" id="username" value="">
+        </div>
+        <div class="setting">
+            <input type="button" value="Save Changes" id="save-btn">
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('save-btn').addEventListener('click', function() {
+            var username = document.getElementById('username').value;
+            var profileName = document.getElementById('profile-info');
+            if (profileName) {
+                profileName.textContent = username;
+            }
+        });
+    </script>
+</body>
+</html>

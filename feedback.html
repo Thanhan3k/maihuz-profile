@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FeedBack</title>
+    <style>
+        /* CSS code here... */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fafafa;
+        }
+        .profile-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .about-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        #feedback-form {
+            width: 70%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        #feedback-form label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        #feedback-form textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        #feedback-form input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #feedback-message {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        .back-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .back-button button {
+            padding: 10px 20px;
+            background-color: #0c0c0c;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <!-- Profile content here... -->
+        <div class="about-container">
+            <h2>About Us</h2>
+            <p>Chào mừng đén với website của chúng tôi! Khách hàng rất quan trọng, khách hàng sẽ được khách hàng theo dõi</p>
+            <!-- Customer feedback form -->
+            <form id="feedback-form">
+                <label for="feedback">Your Feedback:</label>
+                <textarea id="feedback" name="feedback" rows="4" cols="50"></textarea>
+                <input type="submit" value="Submit">
+            </form>
+            <div id="feedback-message"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var feedbackForm = document.getElementById("feedback-form");
+            var feedbackMessage = document.getElementById("feedback-message");
+
+            feedbackForm.addEventListener("submit", function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                var formData = new FormData(this); // Get form data
+                var feedback = formData.get("feedback"); // Get feedback from form data
+
+                // Gửi phản hồi tới máy chủ (bạn có thể sử dụng API tìm nạp hoặc AJAX tại đây)
+                 // Ví dụ: bạn có thể gửi nó đến điểm cuối phụ trợ để xử lý
+                 // Thay thế "your-backend-endpoint" bằng URL điểm cuối thực tế của bạn
+                fetch("your-backend-endpoint", {
+                    method: "POST",
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Hiển thị thông báo phản hồi cho người dùng
+                    feedbackMessage.textContent = data.message;
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                });
+            });
+        });
+    </script>
+            </div>
+            <div class="back-button">
+                <button onclick="window.history.back()">Back</button>
+            </div>
+</body>
+</html>
